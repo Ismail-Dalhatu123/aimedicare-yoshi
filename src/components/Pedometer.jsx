@@ -23,7 +23,7 @@ function Pedometer({ date }) {
 
 	useEffect(() => {
 		axios
-			.get(`/v1/vitals/${id}/sport-data?from${date}&to${date}`)
+			.get(`/v1/vitals/${id}/sport-data?from=${date}&to=${date}`)
 			.then((res) => setReadings(res.data.data.readings));
 	}, [id, date]);
 

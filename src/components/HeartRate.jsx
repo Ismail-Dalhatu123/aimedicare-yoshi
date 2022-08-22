@@ -16,7 +16,7 @@ function HeartRate({ date }) {
 
 	useEffect(() => {
 		axios
-			.get(`/v1/vitals/${id}/heart-rate?from${date}&to${date}`)
+			.get(`/v1/vitals/${id}/heart-rate?from=${date}&to=${date}`)
 			.then((res) => setReadings(res.data.data.readings));
 	}, [id, date]);
 

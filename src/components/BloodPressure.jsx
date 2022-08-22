@@ -16,7 +16,7 @@ function BloodPressure({ date }) {
 
 	useEffect(() => {
 		axios
-			.get(`/v1/vitals/${id}/blood-pressure?from${date}&to${date}`)
+			.get(`/v1/vitals/${id}/blood-pressure?from=${date}&to=${date}`)
 			.then((res) => {
 				const arr = res.data.data.readings.map(
 					(reading) => reading.bloodPressure
