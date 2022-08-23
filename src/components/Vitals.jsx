@@ -5,7 +5,7 @@ import HeartRate from './Readings/HeartRate';
 import BloodPressure from './Readings/BloodPressure';
 import BloodOxygen from './Readings/BloodOxygen';
 
-function Vitals() {
+function Vitals({ date }) {
 	return (
 		<div className="vitals">
 			<div className="btn-wrapper">
@@ -15,11 +15,11 @@ function Vitals() {
 			</div>
 
 			<div className="readings">
-				<Pedometer />
-				<HRV />
-				<HeartRate />
-				<BloodPressure />
-				<BloodOxygen />
+				<Pedometer date={date} />
+				<HRV date={date} />
+				<HeartRate date={date} />
+				<BloodPressure date={date} />
+				<BloodOxygen date={date} />
 			</div>
 		</div>
 	);

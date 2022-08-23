@@ -80,7 +80,7 @@ function ViewStudent() {
 				{cloneElement(graphs[index].component, { date })}
 			</div>
 
-			<Vitals />
+			<Vitals date={date} />
 		</div>
 	);
 }

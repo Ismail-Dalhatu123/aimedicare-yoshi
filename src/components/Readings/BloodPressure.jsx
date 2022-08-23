@@ -3,16 +3,16 @@ import { useLocation } from 'react-router';
 import icon from '../../assets/svg/heart-rate.svg';
 import axios from '../../axios';
 
-function BloodPressure() {
+function BloodPressure({ date }) {
 	const [data, setData] = useState([]);
 	const id = useLocation().pathname.split('/').pop();
 	const name = 'blood pressure';
 
 	useEffect(() => {
 		axios
-			.get(`/v1/vitals/${id}/blood-pressure`)
+			.get(`/v1/vitals/${id}/blood-pressure?from=${date}&to=${date}`)
 			.then((res) => setData(res.data.data.readings));
-	}, [id]);
+	}, [id, date]);
 
 	return (
 		<div className="reading">

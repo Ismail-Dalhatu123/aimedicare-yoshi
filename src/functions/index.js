@@ -7,7 +7,10 @@ export const getDate = (date = new Date()) => {
 	return `${month}-${day}-${date.getFullYear()}`;
 };
 
-export const getTime = (date) =>
-	`${
-		(date.getHours() + 24) % 12 || 12
-	}:${date.getMinutes()}:${date.getSeconds()}`;
+export const getTime = (date) => {
+	let minute = date.getMinutes();
+
+	if (minute < 10) minute = `0${minute}`;
+
+	return `${(date.getHours() + 24) % 12 || 12}:${minute}`;
+};

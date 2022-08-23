@@ -7,6 +7,7 @@ function StudentCard({ id, image, fullname }) {
 				<img
 					src={`https://api-aimedicare-yoshifa.herokuapp.com/api/v1/file-streams/${image}`}
 					alt={fullname}
+					crossOrigin="anonymous"
 				/>
 			</div>
 

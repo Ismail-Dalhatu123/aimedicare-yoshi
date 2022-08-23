@@ -39,16 +39,24 @@ function Pedometer({ date }) {
 						width={300}
 						height={100}
 						data={readings}
-						margin={{ top: 10, left: -20, right: 20 }}
+						margin={{ top: 10, right: 20, bottom: 10 }}
 					>
 						<CartesianGrid strokeDasharray="3 3" />
-						<YAxis dataKey="step" stroke="#067f81" />
+						<YAxis
+							dataKey="step"
+							stroke="#067f81"
+							tickLine={false}
+							type="number"
+							domain={[0, 10000]}
+							allowDataOverflow={true}
+						/>
 						<Tooltip />
 						<Line
 							type="monotone"
 							dataKey="step"
 							stroke="#067f81"
 							strokeWidth={2}
+							dot={false}
 						/>
 					</LineChart>
 				</ResponsiveContainer>
@@ -69,6 +77,7 @@ function Pedometer({ date }) {
 							key={index}
 							img={step}
 							item={getTime(new Date(reading.createdAt))}
+							unit="Steps"
 							value={reading.step}
 						/>
 					))}
@@ -80,6 +89,7 @@ function Pedometer({ date }) {
 							key={index}
 							img={distance}
 							item={getTime(new Date(reading.createdAt))}
+							unit="KM"
 							value={reading.distance}
 						/>
 					))}
@@ -91,6 +101,7 @@ function Pedometer({ date }) {
 							key={index}
 							img={kcal}
 							item={getTime(new Date(reading.createdAt))}
+							unit="KCal"
 							value={reading.Kcal}
 						/>
 					))}
@@ -102,12 +113,15 @@ function Pedometer({ date }) {
 
 export default Pedometer;
 
-function Step({ img, item, value }) {
+function Step({ img, item, value, unit }) {
 	return (
 		<div className="step">
 			<p>{item}</p>
 			<img src={img} alt="" />
-			<p>{value}</p>
+			<p>
+				{value}
+				<span>{unit}</span>
+			</p>
 		</div>
 	);
 }

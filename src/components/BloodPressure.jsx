@@ -33,22 +33,29 @@ function BloodPressure({ date }) {
 						width={300}
 						height={100}
 						data={readings}
-						margin={{ top: 10, left: -20, right: 20 }}
+						margin={{ top: 10, right: 20, bottom: 10, left: -20 }}
 					>
 						<CartesianGrid strokeDasharray="3 3" />
-						<YAxis stroke="#067f81" />
+						<YAxis
+							stroke="#067f81"
+							type="number"
+							domain={[0, 200]}
+							allowDataOverflow={true}
+						/>
 						<Tooltip />
 						<Line
 							type="monotone"
 							dataKey="high"
 							stroke="#067f81"
 							strokeWidth={2}
+							dot={false}
 						/>
 						<Line
 							type="monotone"
 							dataKey="low"
 							stroke="#067f81"
 							strokeWidth={2}
+							dot={false}
 						/>
 					</LineChart>
 				</ResponsiveContainer>

@@ -3,16 +3,20 @@ import { useLocation } from 'react-router';
 import icon from '../../assets/svg/pedometer.svg';
 import axios from '../../axios';
 
-function Pedometer() {
+function Pedometer({ date }) {
 	const [data, setData] = useState([]);
 	const id = useLocation().pathname.split('/').pop();
 	const name = 'pedometer';
+	const totalSteps = data
+		.reduce((prev, current) => prev + current.step, 0)
+		.toString()
+		.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
 	useEffect(() => {
 		axios
-			.get(`/v1/vitals/${id}/sport-data`)
+			.get(`/v1/vitals/${id}/sport-data?from=${date}&to=${date}`)
 			.then((res) => setData(res.data.data.readings));
-	}, [id]);
+	}, [id, date]);
 
 	return (
 		<div className="reading">
@@ -23,8 +27,7 @@ function Pedometer() {
 
 			<div className="value-wrapper">
 				<p>
-					<span>{data.length ? data[data.length - 1]?.['step'] : '0'}</span>{' '}
-					Steps
+					<span>{data.length ? totalSteps : '0'}</span> Steps
 				</p>
 			</div>
 		</div>
