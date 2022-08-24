@@ -12,24 +12,38 @@ function StudentInfo({ fullname, gender, phoneNumber }) {
 					<img src={back} alt="go back" />
 				</div>
 
-				{/* <div className="status">
-					<div className={active ? 'online' : 'offline'} />
-				</div> */}
-
-				<div className="name-wrapper">
-					<p className="name">{fullname}</p>
-					{/* <p className="email">{email}</p> */}
+				<div className="status">
+					<div className="online" />
 				</div>
 
-				<div className="age-wrapper">
-					{/* <p>Age: {age}</p> */}
-					<p>Gender: {gender}</p>
-					<p>Phone: {phoneNumber}</p>
+				<div>
+					<div className="name-wrapper">
+						<p className="name">{fullname}</p>
+						<p className="email">example@email.com</p>
+					</div>
+
+					<div className="age-wrapper">
+						<p>Date of Birth: 1st Jan 0000</p>
+						<p>Gender: {gender}</p>
+						<p>Phone: {phoneNumber}</p>
+					</div>
 				</div>
 			</div>
 
 			<div className="player-wrapper">
+				<div className="height">
+					<p className="title">Height</p>
+					<p>
+						5<span>ft</span> 5<span>in</span>
+					</p>
+				</div>
 				<img src={player} alt={fullname} />
+				<div className="height">
+					<p className="title">Weight</p>
+					<p>
+						70<span>kg</span>
+					</p>
+				</div>
 			</div>
 
 			<div className="map-wrapper">

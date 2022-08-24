@@ -5,9 +5,19 @@
 	overflow-y: auto;
 
 	.s_list {
-		@include flex;
-		flex-wrap: wrap;
-		width: 100vw;
-		padding: 3vw 5vw;
+		display: grid;
+		place-items: center;
+		padding: 3vw 3vw;
+		grid-template-columns: repeat(6, 1fr);
+
+		@include responsive(xl) {
+			grid-template-columns: repeat(4, 1fr);
+		}
+		@include responsive(lg) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+		@include responsive(md) {
+			grid-template-columns: repeat(3, 1fr);
+		}
 	}
 }

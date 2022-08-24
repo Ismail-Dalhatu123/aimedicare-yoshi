@@ -13,6 +13,7 @@ import axios from '../axios';
 import { getDate } from '../functions';
 import HeartRate from '../components/HeartRate';
 import BloodPressure from '../components/BloodPressure';
+import BloodOxygen from '../components/BloodOxygen';
 
 function ViewStudent() {
 	const [player, setPlayer] = useState({
@@ -36,14 +37,14 @@ function ViewStudent() {
 	const handlePrev = () =>
 		setIndex((prev) => {
 			const number = prev - 1;
-			if (number < 0) return 2;
+			if (number < 0) return NUM_OF_GRAPHS;
 			return number;
 		});
 
 	const handleNext = () =>
 		setIndex((prev) => {
 			const number = prev + 1;
-			if (number > 2) return 0;
+			if (number > NUM_OF_GRAPHS) return 0;
 			return number;
 		});
 
@@ -103,4 +104,11 @@ const graphs = [
 		name: 'Blood Pressure',
 		component: <BloodPressure />,
 	},
+	{
+		id: 4,
+		name: 'Blood Oxygen',
+		component: <BloodOxygen />,
+	},
 ];
+
+const NUM_OF_GRAPHS = graphs.length - 1;
